@@ -1,4 +1,3 @@
-const preprocess = require('svelte-preprocess');
 const path = require('path');
 
 module.exports = {
@@ -15,7 +14,7 @@ module.exports = {
     "@storybook/addon-svelte-csf"
   ],
   "svelteOptions": {
-    "preprocess": preprocess()
+    "preprocess": import('../svelte.config.js').then((mod) => mod.preprocess)
   },
   webpackFinal: async (config) => {
     config.resolve = {
